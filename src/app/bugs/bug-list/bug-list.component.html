@@ -1,3 +1,37 @@
-<p>
-  bug-list works!
-</p>
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Severity</th>
+          <th>Description</th>
+          <th>Logged By</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="bugRow"
+          *ngFor="let bug of bugs" 
+           
+          data-toggle="modal"
+          (click)="bugDetail.configureForm(bug)">
+          <!-- Put this back when I figure out what it is and  how to use it[attr.data-target]=" '#' + bugDetail.modalId"-->
+        <!-- data-target (Bootstrap) is like a click event.
+            attr. is Angular.
+            The click event solves the two way data binding problem.
+        -->
+
+          <td>{{ bug.title }}</td>
+          <td>{{ bug.status }}</td><!--| status -->
+          <td>{{ bug.severity }}</td><!--| severity -->
+          <td>{{ bug.description }}</td>
+          <td>{{ bug.createdBy }}</td>
+          <td>{{ bug.createdDate }}</td><!--| date -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

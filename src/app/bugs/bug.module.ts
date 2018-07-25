@@ -11,6 +11,8 @@ import { BugRoutingModule } from "./bug-routing.module";
 
 import { BugListComponent } from "./bug-list/bug-list.component";
 
+import { BugService } from "./bug.service";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { BugListComponent } from "./bug-list/bug-list.component";
   ],
   declarations: [
     BugListComponent
-  ]
+  ],
+  providers: [ BugService ]
 })
 export class BugModule { }
