@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
 
+    // Routing 7
     // Paths are defined here (url handling). 
     RouterModule.forRoot([
       // Root path (doesn't have to be a component).
