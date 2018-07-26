@@ -29,9 +29,11 @@
           <td>{{ bug.severity }}</td><!--| severity -->
           <td>{{ bug.description }}</td>
           <td>{{ bug.createdBy }}</td>
-          <td>{{ bug.createdDate }}</td><!--| date -->
+          <td>{{ bug.createdDate | date}}</td><!-- -->
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+<!-- #bugDetail = template reference vairiable -->
+<bug-detail #bugDetail></bug-detail>

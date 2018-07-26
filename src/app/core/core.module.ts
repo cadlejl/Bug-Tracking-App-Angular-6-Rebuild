@@ -1,44 +1,44 @@
-// /*** Core module: Singleton Services ***/
+/*** Core module: Singleton Services ***/
 
-// import { 
-//   NgModule, ModuleWithProviders, Optional, SkipSelf 
-// } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import { 
+  NgModule, ModuleWithProviders, Optional, SkipSelf 
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-// @NgModule({
-//   imports: [
-//     CommonModule
-//   ],
-//   declarations: []
-// })
-// export class CoreModule { 
-//   constructor(
-//     // "Inject and instance of CoreModule IF another instance doesn't exist"
+import { FirebaseConfigService } from "./firebase-config.service";
 
-//     // Marks dependency as optional: 
-//     @Optional()
+@NgModule({
+  imports: [ CommonModule ],
+  declarations: []
+})
+export class CoreModule { 
+  constructor(
+    // "Inject and instance of CoreModule IF another instance doesn't exist"
 
-//     // Checks injector hierarchy for another instance of itself
-//     @SkipSelf()
+    // Marks dependency as optional: 
+    @Optional()
 
-//     parentModule: CoreModule
-// ) {
-//     // "if" parentModule already contains an instance of CoreModule
-//     // (i.e. if parameter is not null), CoreModule exists.
-//     if (parentModule) {
-//         throw new Error(
-//             "CoreModule exists already. Only import in the root/app module"
-//         );
-//     }
-// }
+    // Checks injector hierarchy for another instance of itself
+    @SkipSelf()
 
-//   // Add singletons here
-//   // Allows the creation of singletons. forRoot() locks CoreModule to the root
-//   // (won't work in other modules).
-//   static forRoot(): ModuleWithProviders {
-//     return {
-//       ngModule: CoreModule,
-//       providers: []
-//     }
-//   }
-// }
+    parentModule: CoreModule
+) {
+    // "if" parentModule already contains an instance of CoreModule
+    // (i.e. if parameter is not null), CoreModule exists.
+    if (parentModule) {
+        throw new Error(
+            "CoreModule exists already. Only import in the root/app module"
+        );
+    }
+}
+
+  // Add singletons here: only one instance can exist across whole app
+  // Allows the creation of singletons. forRoot() locks CoreModule to the root
+  // (won't work in other modules).
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CoreModule,
+      providers: [FirebaseConfigService]
+    }
+  }
+}

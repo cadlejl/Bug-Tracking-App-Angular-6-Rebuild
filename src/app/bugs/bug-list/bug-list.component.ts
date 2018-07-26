@@ -30,5 +30,5 @@ export class BugListComponent implements OnInit {
           console.error("Unable to get added bug - ", err);
       }
     );
-}
+  }
 }

@@ -5,11 +5,15 @@ import { Observable } from "rxjs";
 // Reference for injection
 import { FirebaseConfigService } from '../core/firebase-config.service';
 
-import { Bug } from "./model/bug";
+import { Bug } from './model/bug';
+
+import { BugModule } from "./bug.module";
 
 @Injectable({
   // Not in previous version
-  providedIn: 'root'
+  providedIn: 'root',
+  /*providedIn: BugModule 
+  This created circular dependency*/
 })
 export class BugService {
   // Injected in constructor.

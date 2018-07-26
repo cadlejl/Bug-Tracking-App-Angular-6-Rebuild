@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 // Import from the Firebase module. 
 // "*" = no individual exports; import whole thing
 //import * as firebase from 'firebase'; This (or one below) was causing console advisory
-import * as firebase from 'firebase/app';// What kind of path is this?
+import * as firebase from 'firebase';// What kind of path is this?
 
 
 // Add in the database part from the import above: 
