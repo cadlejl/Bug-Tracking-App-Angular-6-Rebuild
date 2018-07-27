@@ -224,14 +224,14 @@ export class BugDetailComponent implements OnInit {
       // this.currentBug.severity = this.bugForm.value["severity"];
       // this.currentBug.description = this.bugForm.value["description"];
       this.bugService.addBug(this.currentBug);
-      /*this.freshForm();*/
+      this.freshForm();
   }
 
   // This added in after decoupling in if statemant in configureForm().
   // 7/26 comment
   updateBug() {
       this.bugService.updateBug(this.currentBug);
-      /*this.freshForm();*/
+      this.freshForm();
   }
 
   // 7/26 comment
@@ -242,27 +242,27 @@ export class BugDetailComponent implements OnInit {
   // }
 
   // 7/26 comment
-  // freshForm() {
-  //     this.bugForm.reset({ 
-  //         status: this.statuses.Logged, 
-  //         severity: this.severities.Severe 
-  //     });
+  freshForm() {
+      this.bugForm.reset({ 
+          status: this.statuses.Logged, 
+          severity: this.severities.Severe 
+      });
       
-  //     this.cleanBug();
-  // }
+      this.cleanBug();
+  }
   
   // 7/26 comment
-  // cleanBug() {
-  //     this.currentBug = new Bug(
-  //         null, 
-  //         null, 
-  //         this.statuses.Logged, 
-  //         this.severities.Severe, 
-  //         null, 
-  //         null, 
-  //         null, 
-  //         null, 
-  //         null
-  //     );
-  // }
+  cleanBug() {
+      this.currentBug = new Bug(
+          null, 
+          null, 
+          this.statuses.Logged, 
+          this.severities.Severe, 
+          null, 
+          null, 
+          null, 
+          null, 
+          null
+      );
+  }
 }
