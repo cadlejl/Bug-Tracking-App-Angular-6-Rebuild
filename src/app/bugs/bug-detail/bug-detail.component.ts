@@ -60,8 +60,8 @@ export class BugDetailComponent implements OnInit {
   // 7/26 comment
   ngOnInit() {
       // Lecture 129
-      // this.statusArr = Object.keys(this.statuses).filter(Number);
-      // this.severityArr = Object.keys(this.severities).filter(Number);
+      this.statusArr = Object.keys(this.statuses).filter(Number);
+      this.severityArr = Object.keys(this.severities).filter(Number);
 
       this.configureForm();
   }
@@ -165,46 +165,45 @@ export class BugDetailComponent implements OnInit {
       Instructor says wiring in currentBug works the first time, but not 
       after. I don't know why. I'm gonna just run with it for now to get through the course and figure it later. */
       this.bugForm = this.formB.group({
-          title: [
-              this.currentBug.title/*null*//*, 
-              [Validators.required, forbiddenStringValidator(/puppy/i)]*/],
-          status: [this.currentBug.status/*1*//*, Validators.required*/],
-          severity: [this.currentBug.severity/*1*//*, Validators.required*/],
-          description: [this.currentBug.description/*null*//*, Validators.required*/]
+        title: [
+          this.currentBug.title/*null*//*, 
+          [Validators.required, forbiddenStringValidator(/puppy/i)]*/],
+        status: [this.currentBug.status/*1*//*, Validators.required*/],
+        severity: [this.currentBug.severity/*1*//*, Validators.required*/],
+        description: [this.currentBug.description/*null*//*, Validators.required*/]
       });
    }
 
   // For creating bugs or adding/editing bugs.
   // 7/26 comment
   submitForm(deleteClick?: boolean) {
-      this.currentBug.title = this.bugForm.value["title"];
-      this.currentBug.status = this.bugForm.value["status"];
-      this.currentBug.severity = this.bugForm.value["severity"];
-      this.currentBug.description = this.bugForm.value["description"];
+    this.currentBug.title = this.bugForm.value["title"];
+    this.currentBug.status = this.bugForm.value["status"];
+    this.currentBug.severity = this.bugForm.value["severity"];
+    this.currentBug.description = this.bugForm.value["description"];
 
-      /* Now, how do we differentiate between adding and editing a bug? A key 
-      differece between the two is an edited bug has an id (firebase key),
-      and an added bug does not. Therefore: */
-      if (this.currentBug.id) {
-          if (deleteClick) {
-              if (confirm(
-                      "Are you sure you want to permanently delete this bug?"
-                  )
-              ) {
-                  //this.removeBug();
-              }
-          } else {
-              this.updateBug();
-          }
-          //this.updateBug();
-      } else {
-          this.addBug();
-      }
-      /* ^^^ This all does suggest though that what I said before about dbRef
-      bringing in a unique id is incorrect. We needed .key to bring that in. */
-      
-      // This has to be moved due to modal issue addressed in lecture 130
-      // this.freshForm();
+    /* Now, how do we differentiate between adding and editing a bug? A key 
+    differece between the two is an edited bug has an id (firebase key),
+    and an added bug does not. Therefore: */
+    if (this.currentBug.id) {
+        if (deleteClick) {
+            if (confirm(
+                  "Are you sure you want to permanently delete this bug?"
+                )) {
+                //this.removeBug();
+            }
+        } else {
+            this.updateBug();
+        }
+        //this.updateBug(); not sure why this is here.
+    } else {
+        this.addBug();
+    }
+    /* ^^^ This all does suggest though that what I said before about dbRef
+    bringing in a unique id is incorrect. We needed .key to bring that in. */
+    
+    // This has to be moved due to modal issue addressed in lecture 130
+    // this.freshForm();
   }
 
   // Same name as method in bug-service.ts. Taking empty properties from model
@@ -243,26 +242,26 @@ export class BugDetailComponent implements OnInit {
 
   // 7/26 comment
   freshForm() {
-      this.bugForm.reset({ 
-          status: this.statuses.Logged, 
-          severity: this.severities.Severe 
-      });
-      
-      this.cleanBug();
+    this.bugForm.reset({ 
+        status: this.statuses.Logged, 
+        severity: this.severities.Severe 
+    });
+    
+    this.cleanBug();
   }
   
   // 7/26 comment
   cleanBug() {
-      this.currentBug = new Bug(
-          null, 
-          null, 
-          this.statuses.Logged, 
-          this.severities.Severe, 
-          null, 
-          null, 
-          null, 
-          null, 
-          null
-      );
+    this.currentBug = new Bug(
+      null, 
+      null, 
+      this.statuses.Logged, 
+      this.severities.Severe, 
+      null, 
+      null, 
+      null, 
+      null, 
+      null
+    );
   }
 }
