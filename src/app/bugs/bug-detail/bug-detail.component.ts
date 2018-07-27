@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 
 // Going to use the getBug() method.
 // Injected
@@ -10,6 +10,10 @@ import { BugService } from '../bug.service';
 import { Bug } from '../model/bug';
 
 import { STATUS, SEVERITY } from '../../shared/constants/constants';
+
+import { 
+  forbiddenStringValidator 
+} from "../../shared/validation/forbidden-string.validator";
 
 
 @Component({
@@ -166,11 +170,11 @@ export class BugDetailComponent implements OnInit {
       after. I don't know why. I'm gonna just run with it for now to get through the course and figure it later. */
       this.bugForm = this.formB.group({
         title: [
-          this.currentBug.title/*null*//*, 
-          [Validators.required, forbiddenStringValidator(/puppy/i)]*/],
-        status: [this.currentBug.status/*1*//*, Validators.required*/],
-        severity: [this.currentBug.severity/*1*//*, Validators.required*/],
-        description: [this.currentBug.description/*null*//*, Validators.required*/]
+          this.currentBug.title/*null*/, 
+          [Validators.required, forbiddenStringValidator(/puppy/i)]],
+        status: [this.currentBug.status/*1*/, Validators.required],
+        severity: [this.currentBug.severity/*1*/, Validators.required],
+        description: [this.currentBug.description/*null*/, Validators.required]
       });
    }
 

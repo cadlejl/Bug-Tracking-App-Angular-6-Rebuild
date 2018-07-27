@@ -92,7 +92,7 @@
             <button 
               class="btn btn-success btn-xl"
               type="submit"  
-              
+              [disabled]="bugForm.invalid"
               (click)="submitForm()"
               ><!--REPLACE [disabled]="bugForm.invalid" data-dismiss="modal"-->
               <!--submitForm() method in bug-detail component
