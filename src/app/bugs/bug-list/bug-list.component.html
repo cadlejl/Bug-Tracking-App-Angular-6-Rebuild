@@ -15,7 +15,7 @@
         <tr
           class="bugRow"
           *ngFor="let bug of bugs" 
-           
+          
           data-toggle="modal"
           (click)="bugDetail.configureForm(bug)">
           <!-- Put this back when I figure out what it is and  how to use it[attr.data-target]=" '#' + bugDetail.modalId"-->
@@ -36,4 +36,4 @@
   </div>
 </div>
 <!-- #bugDetail = template reference vairiable -->
-<bug-detail #bugDetail></bug-detail>
+<app-bug-detail #bugDetail></app-bug-detail>
