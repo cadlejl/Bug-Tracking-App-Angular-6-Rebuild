@@ -7,7 +7,7 @@ import { FirebaseConfigService } from '../core/firebase-config.service';
 
 import { Bug } from './model/bug';
 
-import { BugModule } from "./bug.module";
+//import { BugModule } from "./bug.module";
 
 @Injectable({
   // Not in previous version
@@ -55,7 +55,28 @@ export class BugService {
           obs.throw(err);
         }
       );
-    }
+    });
+  }
+
+  // Once false edit issue was solved, we add this method to bring in actual 
+  // changes. Same or similar syntax to getAddedBugs().
+  changedListener(): Observable<any> {
+    return Observable.create(
+      obs => {
+        this.bugsDbRef.on(
+          'child_changed', 
+          bug => {
+            const updatedBug = bug.val() as Bug;
+            console.log(updatedBug)
+            updatedBug.id = bug.key;
+            console.log(updatedBug.id);
+            obs.next(updatedBug);
+          },
+          err => {
+            obs.throw(err);
+          }
+        );
+      }
     );
   }
 
@@ -82,5 +103,17 @@ export class BugService {
     }).catch(
         err => console.error("Unable to add bug to Firebase - ", err)
       );
+  }
+
+  // Linking bug.id to the firebase key in getAddedBugs() allows this method
+  updateBug(bug: Bug) {
+    const currentBugRef = this.bugsDbRef.child(bug.id);
+
+    // So not to pass the id back to firebase?
+    bug.id = null;
+    
+    bug.updatedBy = "Tom Tickle";
+    bug.updatedDate = Date.now();
+    currentBugRef.update(bug);
   }
 }

@@ -17,6 +17,7 @@ export class BugListComponent implements OnInit {
 
   ngOnInit() {
     this.getAddedBugs();
+    this.getUpdatedBugs();
   }
 
   getAddedBugs() {
@@ -28,6 +29,25 @@ export class BugListComponent implements OnInit {
       },
       err => {
           console.error("Unable to get added bug - ", err);
+      }
+    );
+  }
+
+  // Lecture 125
+  getUpdatedBugs() {
+    this.bugService.changedListener().subscribe(
+      updatedBug => {
+        // .map iterates through every element in the array and returns 
+        // everything it finds as an array.
+        const bugIndex = this.bugs.map(
+          index => index.id
+        ).indexOf(
+          updatedBug['id']
+        );
+        this.bugs[bugIndex] = updatedBug;
+      },
+      err => {
+        console.error("Unable to get updated bug - ", err);
       }
     );
   }

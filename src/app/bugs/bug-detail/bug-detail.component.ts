@@ -194,7 +194,7 @@ export class BugDetailComponent implements OnInit {
                   //this.removeBug();
               }
           } else {
-              //this.updateBug();
+              this.updateBug();
           }
           //this.updateBug();
       } else {
@@ -229,10 +229,10 @@ export class BugDetailComponent implements OnInit {
 
   // This added in after decoupling in if statemant in configureForm().
   // 7/26 comment
-  // updateBug() {
-  //     this.bugService.updateBug(this.currentBug);
-  //     /*this.freshForm();*/
-  // }
+  updateBug() {
+      this.bugService.updateBug(this.currentBug);
+      /*this.freshForm();*/
+  }
 
   // 7/26 comment
   // removeBug() {
