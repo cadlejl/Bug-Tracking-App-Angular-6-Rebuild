@@ -176,36 +176,36 @@ export class BugDetailComponent implements OnInit {
 
   // For creating bugs or adding/editing bugs.
   // 7/26 comment
-  // submitForm(deleteClick?: boolean) {
-  //     this.currentBug.title = this.bugForm.value["title"];
-  //     this.currentBug.status = this.bugForm.value["status"];
-  //     this.currentBug.severity = this.bugForm.value["severity"];
-  //     this.currentBug.description = this.bugForm.value["description"];
+  submitForm(deleteClick?: boolean) {
+      this.currentBug.title = this.bugForm.value["title"];
+      this.currentBug.status = this.bugForm.value["status"];
+      this.currentBug.severity = this.bugForm.value["severity"];
+      this.currentBug.description = this.bugForm.value["description"];
 
-  //     /* Now, how do we differentiate between adding and editing a bug? A key 
-  //     differece between the two is an edited bug has an id (firebase key),
-  //     and an added bug does not. Therefore: */
-  //     if (this.currentBug.id) {
-  //         if (deleteClick) {
-  //             if (confirm(
-  //                     "Are you sure you want to permanently delete this bug?"
-  //                 )
-  //             ) {
-  //                 this.removeBug();
-  //             }
-  //         } else {
-  //             this.updateBug();
-  //         }
-  //         //this.updateBug();
-  //     } else {
-  //         this.addBug();
-  //     }
-  //     /* ^^^ This all does suggest though that what I said before about dbRef
-  //     bringing in a unique id is incorrect. We needed .key to bring that in. */
+      /* Now, how do we differentiate between adding and editing a bug? A key 
+      differece between the two is an edited bug has an id (firebase key),
+      and an added bug does not. Therefore: */
+      if (this.currentBug.id) {
+          if (deleteClick) {
+              if (confirm(
+                      "Are you sure you want to permanently delete this bug?"
+                  )
+              ) {
+                  //this.removeBug();
+              }
+          } else {
+              //this.updateBug();
+          }
+          //this.updateBug();
+      } else {
+          this.addBug();
+      }
+      /* ^^^ This all does suggest though that what I said before about dbRef
+      bringing in a unique id is incorrect. We needed .key to bring that in. */
       
-  //     // This has to be moved due to modal issue addressed in lecture 130
-  //     // this.freshForm();
-  // }
+      // This has to be moved due to modal issue addressed in lecture 130
+      // this.freshForm();
+  }
 
   // Same name as method in bug-service.ts. Taking empty properties from model
   // and filling them with corresponding form properties.
@@ -215,17 +215,17 @@ export class BugDetailComponent implements OnInit {
   // }
 
   // 7/26 comment
-  // addBug() {
-  //     // These put in submitForm() instead when updateBug method was created.
-  //     // These need to occur in updateBug as well, so we'll do it when we 
-  //     // submitForm() instead.
-  //     // this.currentBug.title = this.bugForm.value["title"];
-  //     // this.currentBug.status = this.bugForm.value["status"];
-  //     // this.currentBug.severity = this.bugForm.value["severity"];
-  //     // this.currentBug.description = this.bugForm.value["description"];
-  //     this.bugService.addBug(this.currentBug);
-  //     /*this.freshForm();*/
-  // }
+  addBug() {
+      // These put in submitForm() instead when updateBug method was created.
+      // These need to occur in updateBug as well, so we'll do it when we 
+      // submitForm() instead.
+      // this.currentBug.title = this.bugForm.value["title"];
+      // this.currentBug.status = this.bugForm.value["status"];
+      // this.currentBug.severity = this.bugForm.value["severity"];
+      // this.currentBug.description = this.bugForm.value["description"];
+      this.bugService.addBug(this.currentBug);
+      /*this.freshForm();*/
+  }
 
   // This added in after decoupling in if statemant in configureForm().
   // 7/26 comment

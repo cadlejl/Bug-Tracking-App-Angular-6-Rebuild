@@ -58,4 +58,29 @@ export class BugService {
     }
     );
   }
+
+  // Called by BugDetailComponent.addBug(this.currentBug).
+  /* So . . . I think this is taking our current database reference 
+  (bugsDbRef (snapshot)), which holds a new child with unique identifier, 
+  appends the push() method, passes it into a property, and calls the set 
+  method on the snapshot with new child and unique identifier, sticks the 
+  form info in the new child properties . . . and then what? I think it 
+  sends the new bug back to firebase which drops in the new bug, fireing off
+  our listener . . . where? Oh shit! Here! It's righ on top of me in 
+  getAddedBugs() */
+  addBug(bug: Bug) {
+    // .push() creates a new unique identifier
+    const newBugRef = this.bugsDbRef.push();
+
+    newBugRef.set({
+        title: bug.title,
+        status: bug.status,
+        severity: bug.severity,
+        description: bug.description,
+        createdBy: 'Jaime',
+        createdDate: Date.now() // Epoch time
+    }).catch(
+        err => console.error("Unable to add bug to Firebase - ", err)
+      );
+  }
 }
