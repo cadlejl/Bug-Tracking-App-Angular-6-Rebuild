@@ -1,3 +1,7 @@
+/*@media (min-width: 992px)*/
+.modal-dialog.modal-lg {
+    max-width: 900px;
+}
 .modal-content {
     border-radius: 0;
 }
@@ -15,42 +19,86 @@
 #status-dropdown {
     text-align-last: center;
 }
-#title-field,
-#severity-dropdown {
+#status-form-group {
+    justify-content: flex-end;
+}
+#title-field {
     padding: 0;
 }
+#severity-dropdown {
+    padding: 0px;
+    
+}
 #severity-form-group {
-    padding-left: 0;
     margin-bottom: 0;
 }
 #severity-dropdown {
     margin: 1rem 0 1.5rem 0;
-    color: #CCC;
+    color: rgb(114, 114, 114);
+    padding: 0 10px 0 2px;
+}
+#severity-dropdown:focus, #severity-dropdown.focus {
+    box-shadow: none;
 }
 .modal-footer {
     position: relative;
     border: none;
-    text-align: center;
     padding-bottom: 4rem;
+    justify-content: center;
 }
 .delete {
-    /*float: right;*/
-    position: absolute;
+    /* position: absolute;
     right: 12.5rem;
     bottom: 4.2rem;
+    color: #ccc;
+    cursor: pointer; */
+
+
+    /*float: right;*/
     /*display: inline;*/
     /*margin-left: 3rem;*/
-    color: #ccc;
-    cursor: pointer;
 }
 .delete:hover {
     color: #C62828;
 }
-
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.1rem rgb(105, 137, 155);
+    color: #fff;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #34434C;
+  border-color: #34434C;
+}
+.btn-secondary {
+    color: #8c9499;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-secondary:hover {
+    color: #373a3c;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-secondary:not(:disabled):not(.disabled):active, 
+.btn-secondary:not(:disabled):not(.disabled).active,
+.show > .btn-secondary.dropdown-toggle {
+  color: #000; 
+  background-color: #fff;
+  border-color: #4e555b;
+}
+.form-control:focus, .form-control.focus {
+    box-shadow: none;
+}
 /* Validation */
 textarea.ng-invalid.ng-dirty {
     border-color: #C62828;
     transition: border-color 0.2s ease;
+    box-shadow: none;
+}
+textarea {
+    max-height: 13rem;
 }
 #title-field.ng-invalid.ng-dirty {
     border-left: 5px solid #C62828;

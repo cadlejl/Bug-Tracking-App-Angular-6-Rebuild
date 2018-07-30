@@ -1,4 +1,21 @@
 <div class="row">
+  <div class="col-6">
+    <h1>Logged Bugs</h1>
+  </div>
+  <div class="col-6 text-right">
+    <button 
+      type="button"
+      class="btn btn-success btn-lg" 
+      [attr.data-target]=" '#' + bugDetail.modalId" 
+      data-toggle="modal"
+      (click)="bugDetail.freshForm()"
+      (click)="bugDetail.canDelete = false">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Add Bug
+    </button>
+  </div>
+</div>
+<div class="row">
   <div class="col-12">
     <table class="table">
       <thead>
@@ -15,7 +32,7 @@
         <tr
           class="bugRow"
           *ngFor="let bug of bugs" 
-          
+          [attr.data-target]=" '#' + bugDetail.modalId"
           data-toggle="modal"
           (click)="bugDetail.configureForm(bug)">
           <!-- Put this back when I figure out what it is and  how to use it[attr.data-target]=" '#' + bugDetail.modalId"-->
@@ -25,8 +42,8 @@
         -->
 
           <td>{{ bug.title }}</td>
-          <td>{{ bug.status }}</td><!--| status -->
-          <td>{{ bug.severity }}</td><!--| severity -->
+          <td>{{ bug.status | status }}</td><!--| status -->
+          <td>{{ bug.severity | severity }}</td><!--| severity -->
           <td>{{ bug.description }}</td>
           <td>{{ bug.createdBy }}</td>
           <td>{{ bug.createdDate | date}}</td><!-- -->

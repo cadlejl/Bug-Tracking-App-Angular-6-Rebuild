@@ -26,7 +26,7 @@ export class BugDetailComponent implements OnInit {
   // for triggering.
   private modalId = "bugModal";
   
-  private bugForm: FormGroup;
+  private bugForm: FormGroup = null;
   private statuses = STATUS;
   private severities = SEVERITY;
   private statusArr: string[] = [];
@@ -171,10 +171,10 @@ export class BugDetailComponent implements OnInit {
       this.bugForm = this.formB.group({
         title: [
           this.currentBug.title/*null*/, 
-          [Validators.required, forbiddenStringValidator(/puppy/i)]],
-        status: [this.currentBug.status/*1*/, Validators.required],
-        severity: [this.currentBug.severity/*1*/, Validators.required],
-        description: [this.currentBug.description/*null*/, Validators.required]
+          /*[Validators.required, forbiddenStringValidator(/puppy/i)]*/],
+        status: [this.currentBug.status/*1*//*, Validators.required*/],
+        severity: [this.currentBug.severity/*1*//*, Validators.required*/],
+        description: [this.currentBug.description/*null*//*, Validators.required*/]
       });
    }
 
