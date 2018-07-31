@@ -1,4 +1,3 @@
-/*@media (min-width: 992px)*/
 .modal-dialog.modal-lg {
     max-width: 900px;
 }
@@ -40,6 +39,9 @@
 #severity-dropdown:focus, #severity-dropdown.focus {
     box-shadow: none;
 }
+textarea {
+    max-height: 13rem;
+}
 .modal-footer {
     position: relative;
     border: none;
@@ -52,11 +54,6 @@
     bottom: 4.2rem;
     color: #ccc;
     cursor: pointer;
-
-
-    /*float: right;*/
-    /*display: inline;*/
-    /*margin-left: 3rem;*/
 }
 .delete:hover {
     color: #C62828;
@@ -65,7 +62,8 @@
     box-shadow: 0 0 0 0.1rem rgb(105, 137, 155);
     color: #fff;
 }
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active, 
+.btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #34434C;
@@ -96,9 +94,6 @@ textarea.ng-invalid.ng-dirty {
     border-color: #C62828;
     transition: border-color 0.2s ease;
     box-shadow: none;
-}
-textarea {
-    max-height: 13rem;
 }
 #title-field.ng-invalid.ng-dirty {
     border-left: 5px solid #C62828;

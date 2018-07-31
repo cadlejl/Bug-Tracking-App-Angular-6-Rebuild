@@ -1,23 +1,23 @@
 h1 {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 thead th {
-    border-top: none;
-    border-bottom: 1px solid #34434B;
+	border-top: none;
+	border-bottom: 1px solid #34434B;
 }
 th,
 td {
-    font-weight: lighter;
+	font-weight: lighter;
 }
 td {
-    border-bottom: .5px solid rgba(52,67,75,.1);
+	border-bottom: .5px solid rgba(52,67,75,.1);
 }
 i {
-    padding-right: .5rem;
+	padding-right: .5rem;
 }
 tbody > tr {
-    cursor: pointer;
+	cursor: pointer;
 }
 .bugRow:hover {
-    background-color: #faf8f2;
+	background-color: #faf8f2;
 }
