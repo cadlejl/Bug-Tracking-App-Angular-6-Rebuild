@@ -190,14 +190,14 @@ export class BugDetailComponent implements OnInit {
     differece between the two is an edited bug has an id (firebase key),
     and an added bug does not. Therefore: */
     if (this.currentBug.id) {
-        if (deleteClick) {
-            if (confirm(
-                  "Are you sure you want to permanently delete this bug?"
-                )) {
-                //this.removeBug();
-            }
-        } else {
-            this.updateBug();
+			if (deleteClick) {
+				if (confirm(
+					"Are you sure you want to permanently delete this bug?"
+				)) {
+				this.removeBug();
+				}
+			} else {
+					this.updateBug();
         }
         //this.updateBug(); not sure why this is here.
     } else {
@@ -219,36 +219,36 @@ export class BugDetailComponent implements OnInit {
 
   // 7/26 comment
   addBug() {
-      // These put in submitForm() instead when updateBug method was created.
-      // These need to occur in updateBug as well, so we'll do it when we 
-      // submitForm() instead.
-      // this.currentBug.title = this.bugForm.value["title"];
-      // this.currentBug.status = this.bugForm.value["status"];
-      // this.currentBug.severity = this.bugForm.value["severity"];
-      // this.currentBug.description = this.bugForm.value["description"];
-      this.bugService.addBug(this.currentBug);
-      this.freshForm();
+		// These put in submitForm() instead when updateBug method was created.
+		// These need to occur in updateBug as well, so we'll do it when we 
+		// submitForm() instead.
+		// this.currentBug.title = this.bugForm.value["title"];
+		// this.currentBug.status = this.bugForm.value["status"];
+		// this.currentBug.severity = this.bugForm.value["severity"];
+		// this.currentBug.description = this.bugForm.value["description"];
+		this.bugService.addBug(this.currentBug);
+		this.freshForm();
   }
 
   // This added in after decoupling in if statemant in configureForm().
   // 7/26 comment
   updateBug() {
-      this.bugService.updateBug(this.currentBug);
-      this.freshForm();
+		this.bugService.updateBug(this.currentBug);
+		this.freshForm();
   }
 
   // 7/26 comment
-  // removeBug() {
-  //     //console.log(this.currentBug);
-  //     this.bugService.removeBug(this.currentBug);
-  //     // this.freshForm();
-  // }
+  removeBug() {
+      //console.log(this.currentBug);
+      this.bugService.removeBug(this.currentBug);
+      // this.freshForm();
+  }
 
   // 7/26 comment
   freshForm() {
     this.bugForm.reset({ 
-        status: this.statuses.Logged, 
-        severity: this.severities.Severe 
+			status: this.statuses.Logged, 
+			severity: this.severities.Severe 
     });
     
     this.cleanBug();

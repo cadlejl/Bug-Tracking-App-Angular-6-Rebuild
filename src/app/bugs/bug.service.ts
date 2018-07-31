@@ -80,6 +80,24 @@ export class BugService {
     );
   }
 
+  removedListener(): Observable<any> {
+    return Observable.create(
+      obs => {
+        this.bugsDbRef.on(
+          'child_removed', 
+          bug => {
+            const removedBug = bug.val() as Bug;
+            removedBug.id = bug.key;
+            obs.next(removedBug);
+          },
+          err => {
+              obs.throw(err);
+          }
+        );
+      }
+    );
+  }
+
   // Called by BugDetailComponent.addBug(this.currentBug).
   /* So . . . I think this is taking our current database reference 
   (bugsDbRef (snapshot)), which holds a new child with unique identifier, 
@@ -115,5 +133,10 @@ export class BugService {
     bug.updatedBy = "Tom Tickle";
     bug.updatedDate = Date.now();
     currentBugRef.update(bug);
+  }
+
+  removeBug(bug: Bug) {
+    const currentBugRef = this.bugsDbRef.child(bug.id);
+    currentBugRef.remove();
   }
 }

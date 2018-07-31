@@ -95,12 +95,11 @@
               data-dismiss="modal"><!--REPLACE data-dismiss="modal"-->
               Cancel
             </button>
-            <button 
-              
+            <button
               class="btn btn-success btn-xl"
               type="submit"
-              data-dismiss="modal"
               (click)="submitForm()"
+              data-dismiss="modal"
               [disabled]="bugForm.invalid"
               ><!--REPLACE [disabled]="bugForm.invalid" data-dismiss="modal"-->
               <!--submitForm() method in bug-detail component
