@@ -67,9 +67,9 @@ export class BugService {
           'child_changed', 
           bug => {
             const updatedBug = bug.val() as Bug;
-            console.log(updatedBug)
+            // console.log(updatedBug)
             updatedBug.id = bug.key;
-            console.log(updatedBug.id);
+            // console.log(updatedBug.id);
             obs.next(updatedBug);
           },
           err => {
@@ -112,12 +112,12 @@ export class BugService {
     const newBugRef = this.bugsDbRef.push();
 
     newBugRef.set({
-        title: bug.title,
-        status: bug.status,
-        severity: bug.severity,
-        description: bug.description,
-        createdBy: 'Jaime',
-        createdDate: Date.now() // Epoch time
+      title: bug.title,
+      status: bug.status,
+      severity: bug.severity,
+      description: bug.description,
+      createdBy: 'Jaime',
+      createdDate: Date.now() // Epoch time
     }).catch(
         err => console.error("Unable to add bug to Firebase - ", err)
       );

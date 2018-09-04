@@ -140,18 +140,18 @@ export class BugDetailComponent implements OnInit {
       //     this.currentBug = bug;
       // }
       if (bug) {
-          this.canDelete = true;
-          this.currentBug = new Bug(
-              bug.id,
-              bug.title,
-              bug.status,
-              bug.severity,
-              bug.description,
-              bug.createdBy,
-              bug.createdDate,
-              bug.updatedBy,
-              bug.updatedDate
-          );
+        this.canDelete = true;
+        this.currentBug = new Bug(
+          bug.id,
+          bug.title,
+          bug.status,
+          bug.severity,
+          bug.description,
+          bug.createdBy,
+          bug.createdDate,
+          bug.updatedBy,
+          bug.updatedDate
+        );
       }
 
       // FormBuilder technique
@@ -199,7 +199,6 @@ export class BugDetailComponent implements OnInit {
 			} else {
 					this.updateBug();
         }
-        //this.updateBug(); not sure why this is here.
     } else {
         this.addBug();
     }
